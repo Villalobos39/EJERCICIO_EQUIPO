@@ -19,17 +19,25 @@ namespace CUENTA_BANCARIA
 
         public double SaldoTotal(double DepositoInicial, double DepositoAhorro, double Mensualidades, double Interes)
         {
-            double Total = 0;
-            double Suma;
-            double TasaInt;
-            Suma = DepositoInicial + DepositoAhorro;
+            double TasaInt=0;
+            double suma = 0;
+            double valor=0;
+            int contador = 1;
             for (int i = 1; i <= Mensualidades; i++)
             {
-                TasaInt = Suma + (Suma * Interes);
-                Total += TasaInt;
-                i++;
+                int n = dataGV.Rows.Add(Mensualidades);
+                valor += DepositoInicial + DepositoAhorro + TasaInt;
+                TasaInt = valor*Interes;
+                suma = valor + TasaInt;
+                dataGV.Rows[n].Cells[0].Value=contador++.ToString();
+                dataGV.Rows[n].Cells[1].Value = Math.Round(valor, 4).ToString();
+                dataGV.Rows[n].Cells[2].Value = Math.Round(TasaInt, 4).ToString();
+                dataGV.Rows[n].Cells[3].Value = Math.Round(suma, 4).ToString();
+                dataGV.Rows[n].Cells[4].Value= Math.Round((valor + TasaInt), 4).ToString();
+                //contador = i++;
+                DepositoInicial = 0;
             }
-            return Total;
+            return Math.Round(suma,4);
 
         }
 
@@ -37,7 +45,7 @@ namespace CUENTA_BANCARIA
         {
             double DepositoInicial = 10000.00;
             double DepositoAhorro = 1000;
-            double Interes = 0.07;
+            double Interes = 0.00580333;
             int Meses = 12;
             int Mensualidades;
             double Total = 0;
@@ -78,6 +86,12 @@ namespace CUENTA_BANCARIA
             CuotaTxt.Text = "00.00";
             IncialTxt.Text = "00.00";
             SaldoFinal.Text = "00.00";
+            ResetText();
+        }
+
+        private void label7_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
