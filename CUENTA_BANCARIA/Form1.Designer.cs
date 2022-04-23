@@ -36,20 +36,28 @@ namespace CUENTA_BANCARIA
             this.CuotaTxt = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.SaldoFinal = new System.Windows.Forms.Label();
+            this.Interes_Label = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
-            this.IncialTxt = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.dataGV = new System.Windows.Forms.DataGridView();
+            this.Incial_Label = new System.Windows.Forms.Label();
+            this.SaldoFinal_Label = new System.Windows.Forms.Label();
+            this.MontoInicial = new System.Windows.Forms.TextBox();
+            this.InteresTxt = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.NombreTxt = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.NombreLabel = new System.Windows.Forms.Label();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.MESES = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TIDEPSITO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MONTO_ANTERIOR = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.INTERES = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TOTAL = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SALDO = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -60,20 +68,25 @@ namespace CUENTA_BANCARIA
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.NombreTxt);
+            this.groupBox1.Controls.Add(this.label11);
+            this.groupBox1.Controls.Add(this.label9);
+            this.groupBox1.Controls.Add(this.MontoInicial);
+            this.groupBox1.Controls.Add(this.InteresTxt);
+            this.groupBox1.Controls.Add(this.label8);
             this.groupBox1.Controls.Add(this.PeriodoBox);
             this.groupBox1.Controls.Add(this.label13);
             this.groupBox1.Controls.Add(this.ComposicionBox);
             this.groupBox1.Controls.Add(this.CuotaTxt);
             this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.label5);
-            this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Location = new System.Drawing.Point(19, 20);
+            this.groupBox1.Location = new System.Drawing.Point(12, 20);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(282, 155);
+            this.groupBox1.Size = new System.Drawing.Size(287, 220);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "CUENTA DE AHORRO";
+            this.groupBox1.Text = "CONSULTA DE CUENTA DE AHORRO";
             // 
             // PeriodoBox
             // 
@@ -84,7 +97,7 @@ namespace CUENTA_BANCARIA
             "3 AÑOS",
             "4 AÑOS",
             "5 AÑOS"});
-            this.PeriodoBox.Location = new System.Drawing.Point(165, 92);
+            this.PeriodoBox.Location = new System.Drawing.Point(176, 92);
             this.PeriodoBox.Name = "PeriodoBox";
             this.PeriodoBox.Size = new System.Drawing.Size(89, 21);
             this.PeriodoBox.TabIndex = 10;
@@ -103,18 +116,18 @@ namespace CUENTA_BANCARIA
             this.ComposicionBox.FormattingEnabled = true;
             this.ComposicionBox.Items.AddRange(new object[] {
             "MENSUAL",
-            "MENSUAL",
+            "SEMESTRAL",
             "ANUAL"});
-            this.ComposicionBox.Location = new System.Drawing.Point(160, 118);
+            this.ComposicionBox.Location = new System.Drawing.Point(176, 118);
             this.ComposicionBox.Name = "ComposicionBox";
-            this.ComposicionBox.Size = new System.Drawing.Size(94, 21);
+            this.ComposicionBox.Size = new System.Drawing.Size(89, 21);
             this.ComposicionBox.TabIndex = 8;
             // 
             // CuotaTxt
             // 
             this.CuotaTxt.Location = new System.Drawing.Point(177, 65);
             this.CuotaTxt.Name = "CuotaTxt";
-            this.CuotaTxt.Size = new System.Drawing.Size(77, 20);
+            this.CuotaTxt.Size = new System.Drawing.Size(88, 20);
             this.CuotaTxt.TabIndex = 7;
             // 
             // label6
@@ -131,18 +144,9 @@ namespace CUENTA_BANCARIA
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(16, 66);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(141, 13);
+            this.label5.Size = new System.Drawing.Size(156, 13);
             this.label5.TabIndex = 4;
-            this.label5.Text = "CUOTA DE DEPOSITO :  $ ";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(80, 33);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(153, 13);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "DULCE JASMIN VILLALOBOS";
+            this.label5.Text = "CUOTA DE DEPOSITO :       $ ";
             // 
             // label1
             // 
@@ -156,7 +160,7 @@ namespace CUENTA_BANCARIA
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(23, 31);
+            this.label4.Location = new System.Drawing.Point(23, 70);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(102, 13);
             this.label4.TabIndex = 3;
@@ -165,7 +169,7 @@ namespace CUENTA_BANCARIA
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(29, 63);
+            this.label3.Location = new System.Drawing.Point(23, 98);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(108, 13);
             this.label3.TabIndex = 2;
@@ -173,61 +177,44 @@ namespace CUENTA_BANCARIA
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.label7);
-            this.groupBox2.Controls.Add(this.SaldoFinal);
+            this.groupBox2.Controls.Add(this.NombreLabel);
+            this.groupBox2.Controls.Add(this.label2);
+            this.groupBox2.Controls.Add(this.Interes_Label);
+            this.groupBox2.Controls.Add(this.SaldoFinal_Label);
             this.groupBox2.Controls.Add(this.label10);
-            this.groupBox2.Controls.Add(this.IncialTxt);
+            this.groupBox2.Controls.Add(this.Incial_Label);
             this.groupBox2.Controls.Add(this.label3);
             this.groupBox2.Controls.Add(this.label4);
-            this.groupBox2.Location = new System.Drawing.Point(19, 234);
+            this.groupBox2.Location = new System.Drawing.Point(12, 246);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(282, 156);
+            this.groupBox2.Size = new System.Drawing.Size(287, 165);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "RESULTADOS";
             // 
-            // label7
+            // Interes_Label
             // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(143, 31);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(27, 13);
-            this.label7.TabIndex = 4;
-            this.label7.Text = "7  %";
-            this.label7.Click += new System.EventHandler(this.label7_Click);
-            // 
-            // SaldoFinal
-            // 
-            this.SaldoFinal.AutoSize = true;
-            this.SaldoFinal.Location = new System.Drawing.Point(143, 95);
-            this.SaldoFinal.Name = "SaldoFinal";
-            this.SaldoFinal.Size = new System.Drawing.Size(34, 13);
-            this.SaldoFinal.TabIndex = 3;
-            this.SaldoFinal.Text = "00.00";
+            this.Interes_Label.AutoSize = true;
+            this.Interes_Label.Location = new System.Drawing.Point(174, 70);
+            this.Interes_Label.Name = "Interes_Label";
+            this.Interes_Label.Size = new System.Drawing.Size(21, 13);
+            this.Interes_Label.TabIndex = 4;
+            this.Interes_Label.Text = "0%";
             // 
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(37, 95);
+            this.label10.Location = new System.Drawing.Point(23, 130);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(100, 13);
             this.label10.TabIndex = 2;
             this.label10.Text = "SALDO FINAL:    $ ";
             // 
-            // IncialTxt
-            // 
-            this.IncialTxt.AutoSize = true;
-            this.IncialTxt.Location = new System.Drawing.Point(143, 63);
-            this.IncialTxt.Name = "IncialTxt";
-            this.IncialTxt.Size = new System.Drawing.Size(46, 13);
-            this.IncialTxt.TabIndex = 1;
-            this.IncialTxt.Text = "1000.00";
-            // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(207, 181);
+            this.button1.Location = new System.Drawing.Point(194, 417);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(94, 27);
+            this.button1.Size = new System.Drawing.Size(105, 27);
             this.button1.TabIndex = 2;
             this.button1.Text = "CALCULAR";
             this.button1.UseVisualStyleBackColor = true;
@@ -235,9 +222,9 @@ namespace CUENTA_BANCARIA
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(165, 395);
+            this.button2.Location = new System.Drawing.Point(19, 417);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(136, 28);
+            this.button2.Size = new System.Drawing.Size(101, 28);
             this.button2.TabIndex = 3;
             this.button2.Text = "BORRAR";
             this.button2.UseVisualStyleBackColor = true;
@@ -248,14 +235,105 @@ namespace CUENTA_BANCARIA
             this.dataGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGV.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.MESES,
-            this.TIDEPSITO,
+            this.MONTO_ANTERIOR,
             this.INTERES,
             this.TOTAL,
             this.SALDO});
-            this.dataGV.Location = new System.Drawing.Point(324, 20);
+            this.dataGV.Location = new System.Drawing.Point(312, 41);
             this.dataGV.Name = "dataGV";
-            this.dataGV.Size = new System.Drawing.Size(494, 403);
+            this.dataGV.Size = new System.Drawing.Size(540, 404);
             this.dataGV.TabIndex = 4;
+            // 
+            // Incial_Label
+            // 
+            this.Incial_Label.AutoSize = true;
+            this.Incial_Label.Location = new System.Drawing.Point(173, 98);
+            this.Incial_Label.Name = "Incial_Label";
+            this.Incial_Label.Size = new System.Drawing.Size(34, 13);
+            this.Incial_Label.TabIndex = 1;
+            this.Incial_Label.Text = "00.00";
+            // 
+            // SaldoFinal_Label
+            // 
+            this.SaldoFinal_Label.AutoSize = true;
+            this.SaldoFinal_Label.Location = new System.Drawing.Point(173, 130);
+            this.SaldoFinal_Label.Name = "SaldoFinal_Label";
+            this.SaldoFinal_Label.Size = new System.Drawing.Size(34, 13);
+            this.SaldoFinal_Label.TabIndex = 3;
+            this.SaldoFinal_Label.Text = "00.00";
+            // 
+            // MontoInicial
+            // 
+            this.MontoInicial.Location = new System.Drawing.Point(176, 180);
+            this.MontoInicial.Name = "MontoInicial";
+            this.MontoInicial.Size = new System.Drawing.Size(89, 20);
+            this.MontoInicial.TabIndex = 15;
+            // 
+            // InteresTxt
+            // 
+            this.InteresTxt.Location = new System.Drawing.Point(176, 149);
+            this.InteresTxt.Name = "InteresTxt";
+            this.InteresTxt.Size = new System.Drawing.Size(89, 20);
+            this.InteresTxt.TabIndex = 14;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(155, 152);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(15, 13);
+            this.label8.TabIndex = 13;
+            this.label8.Text = "%";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(47, 152);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(102, 13);
+            this.label9.TabIndex = 13;
+            this.label9.Text = "INTERES ANUAL : ";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(49, 180);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(123, 13);
+            this.label11.TabIndex = 13;
+            this.label11.Text = "MONTO INICIAL :       $ ";
+            // 
+            // NombreTxt
+            // 
+            this.NombreTxt.Location = new System.Drawing.Point(80, 30);
+            this.NombreTxt.Name = "NombreTxt";
+            this.NombreTxt.Size = new System.Drawing.Size(173, 20);
+            this.NombreTxt.TabIndex = 16;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(23, 40);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(61, 13);
+            this.label2.TabIndex = 5;
+            this.label2.Text = "CLIENTE : ";
+            // 
+            // NombreLabel
+            // 
+            this.NombreLabel.AutoSize = true;
+            this.NombreLabel.Location = new System.Drawing.Point(90, 40);
+            this.NombreLabel.Name = "NombreLabel";
+            this.NombreLabel.Size = new System.Drawing.Size(132, 13);
+            this.NombreLabel.TabIndex = 6;
+            this.NombreLabel.Text = "  NOMBRE DEL CLIENTE";
+            // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.Location = new System.Drawing.Point(652, 14);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(200, 20);
+            this.dateTimePicker1.TabIndex = 5;
             // 
             // MESES
             // 
@@ -263,10 +341,11 @@ namespace CUENTA_BANCARIA
             this.MESES.Name = "MESES";
             this.MESES.Width = 50;
             // 
-            // TIDEPSITO
+            // MONTO_ANTERIOR
             // 
-            this.TIDEPSITO.HeaderText = "INTDEP";
-            this.TIDEPSITO.Name = "TIDEPSITO";
+            this.MONTO_ANTERIOR.HeaderText = "MONTO_ANTERIOR";
+            this.MONTO_ANTERIOR.Name = "MONTO_ANTERIOR";
+            this.MONTO_ANTERIOR.Width = 120;
             // 
             // INTERES
             // 
@@ -275,8 +354,9 @@ namespace CUENTA_BANCARIA
             // 
             // TOTAL
             // 
-            this.TOTAL.HeaderText = "DEPOSITO";
+            this.TOTAL.HeaderText = "MONTO ACTUAL";
             this.TOTAL.Name = "TOTAL";
+            this.TOTAL.Width = 120;
             // 
             // SALDO
             // 
@@ -287,14 +367,15 @@ namespace CUENTA_BANCARIA
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(839, 435);
+            this.ClientSize = new System.Drawing.Size(864, 465);
+            this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.dataGV);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "CUENTA BANCARIA";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
@@ -313,20 +394,28 @@ namespace CUENTA_BANCARIA
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Label SaldoFinal;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label IncialTxt;
+        private System.Windows.Forms.Label Interes_Label;
         private System.Windows.Forms.ComboBox PeriodoBox;
         private System.Windows.Forms.DataGridView dataGV;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.TextBox MontoInicial;
+        private System.Windows.Forms.TextBox InteresTxt;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label SaldoFinal_Label;
+        private System.Windows.Forms.Label Incial_Label;
+        private System.Windows.Forms.TextBox NombreTxt;
+        private System.Windows.Forms.Label NombreLabel;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.DataGridViewTextBoxColumn MESES;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TIDEPSITO;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MONTO_ANTERIOR;
         private System.Windows.Forms.DataGridViewTextBoxColumn INTERES;
         private System.Windows.Forms.DataGridViewTextBoxColumn TOTAL;
         private System.Windows.Forms.DataGridViewTextBoxColumn SALDO;

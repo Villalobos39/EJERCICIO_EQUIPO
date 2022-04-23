@@ -17,81 +17,40 @@ namespace CUENTA_BANCARIA
             InitializeComponent();
         }
 
-        public double SaldoTotal(double DepositoInicial, double DepositoAhorro, double Mensualidades, double Interes)
-        {
-            double TasaInt=0;
-            double suma = 0;
-            double valor=0;
-            int contador = 1;
-            for (int i = 1; i <= Mensualidades; i++)
-            {
-                int n = dataGV.Rows.Add(Mensualidades);
-                valor += DepositoInicial + DepositoAhorro + TasaInt;
-                TasaInt = valor*Interes;
-                suma = valor + TasaInt;
-                dataGV.Rows[n].Cells[0].Value=contador++.ToString();
-                dataGV.Rows[n].Cells[1].Value = Math.Round(valor, 4).ToString();
-                dataGV.Rows[n].Cells[2].Value = Math.Round(TasaInt, 4).ToString();
-                dataGV.Rows[n].Cells[3].Value = Math.Round(suma, 4).ToString();
-                dataGV.Rows[n].Cells[4].Value= Math.Round((valor + TasaInt), 4).ToString();
-                //contador = i++;
-                DepositoInicial = 0;
-            }
-            return Math.Round(suma,4);
-
-        }
-
-        public void CuentaAhorro()
-        {
-            double DepositoInicial = 10000.00;
-            double DepositoAhorro = 1000;
-            double Interes = 0.00580333;
-            int Meses = 12;
-            int Mensualidades;
-            double Total = 0;
-
-            switch (PeriodoBox.Text)
-            {
-                case "1 AÑO":
-                    Mensualidades = Meses;
-                    Total= SaldoTotal(DepositoInicial, DepositoAhorro, Mensualidades, Interes);
-                    break; 
-                case "2 AÑOS":
-                    Mensualidades = Meses*2;
-                    Total = SaldoTotal(DepositoInicial, DepositoAhorro, Mensualidades, Interes);
-                    break; 
-                case "3 AÑOS":
-                    Mensualidades = Meses*3;
-                    Total = SaldoTotal(DepositoInicial, DepositoAhorro, Mensualidades, Interes);
-                    break; 
-                case "4 AÑOS":
-                    Mensualidades = Meses*4;
-                    Total = SaldoTotal(DepositoInicial, DepositoAhorro, Mensualidades, Interes);
-                    break; 
-                case "5 AÑOS":
-                    Mensualidades = Meses*5;
-                    Total = SaldoTotal(DepositoInicial, DepositoAhorro, Mensualidades, Interes);
-                    break;
-            }
-            SaldoFinal.Text = Total.ToString();
-        }
-
         private void button1_Click(object sender, EventArgs e)
         {
-            CuentaAhorro();
+            try
+            {
+                Cuenta_Bancaria cuenta_Bancaria = new Cuenta_Bancaria();
+                decimal DepositoInicial = Convert.ToDecimal(MontoInicial.Text);
+                decimal DepositoAhorro = Convert.ToDecimal(CuotaTxt.Text);
+                string Periodo = PeriodoBox.Text;
+                string Composicion = ComposicionBox.Text;
+                double PorcentajeIntere = Convert.ToDouble(InteresTxt.Text);
+         
+                cuenta_Bancaria.CuentaBancaria(PorcentajeIntere, Composicion, Periodo, DepositoInicial, DepositoAhorro);
+
+                SaldoFinal_Label.Text = Math.Round(cuenta_Bancaria.Resultado,2).ToString();
+                Incial_Label.Text = DepositoInicial.ToString();
+                Interes_Label.Text =PorcentajeIntere.ToString();
+                NombreLabel.Text = NombreTxt.Text;
+
+            }
+            catch (Exception)
+            {
+                ResetText();
+            }
+            
+
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
             CuotaTxt.Text = "00.00";
-            IncialTxt.Text = "00.00";
-            SaldoFinal.Text = "00.00";
+            Incial_Label.Text = "00.00";
+            SaldoFinal_Label.Text = "00.00";
             ResetText();
         }
 
-        private void label7_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }
