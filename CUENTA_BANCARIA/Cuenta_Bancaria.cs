@@ -10,10 +10,13 @@ namespace CUENTA_BANCARIA
     {
         public decimal Resultado = 0;
 
-        public void CuentaBancaria(double Interes, string Composicion, string Periodo, decimal DepositoInicial, decimal DepositoAhorro)
-        {
+        // EL METODO MANDA A LLAMAR A LA CLASE CALCULAR CUENTA DONDE SE REALIZA LA OPERACION DESIGNADA 
+        public void CalcularIngresos(double Interes, string Composicion, string Periodo, decimal DepositoInicial, decimal DepositoAhorro)
+        { 
+            // INSTACIAMOS LA CLASE DE CALCULAR Y REALIZAMOS LA OPERACIONES 
             CalcularCuenta calcularcuenta = new CalcularCuenta();
             double TasaIntere;
+            // SI LA COMPOSICION DEL CLIENTE ES MENSUAL LA TASA DE INTERES SE DIVIDE ENTRE LOS MESES PARA CALCULAR 
             switch (Composicion)
             {
                 case "MENSUAL":

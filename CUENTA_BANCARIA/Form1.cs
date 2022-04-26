@@ -27,8 +27,10 @@ namespace CUENTA_BANCARIA
                 string Periodo = PeriodoBox.Text;
                 string Composicion = ComposicionBox.Text;
                 double PorcentajeIntere = Convert.ToDouble(InteresTxt.Text);
-         
-                cuenta_Bancaria.CuentaBancaria(PorcentajeIntere, Composicion, Periodo, DepositoInicial, DepositoAhorro);
+
+                // CALCULAR INGRESOS ES EL SALDO TOTAL DE SU CUENTA DE AHORRO 
+                // ENVIAMOS LOS PARAMENTROS DE PORCENTANJE , LA COMPOSICION , EL PERIDO Y LOS DEPOSISTOS 
+                cuenta_Bancaria.CalcularIngresos(PorcentajeIntere, Composicion, Periodo, DepositoInicial, DepositoAhorro);
                 //Metodo();
                 SaldoFinal_Label.Text = Math.Round(cuenta_Bancaria.Resultado,2).ToString();
                 Incial_Label.Text = DepositoInicial.ToString();
@@ -44,7 +46,7 @@ namespace CUENTA_BANCARIA
 
         }
 
-        public decimal SaldoTotal(decimal DepositoInicial, decimal DepositoAhorro, int Mensualidades, double Interes)
+        public decimal SaldoTotalPrueba(decimal DepositoInicial, decimal DepositoAhorro, int Mensualidades, double Interes)
         {
             decimal TasaInt = 0;
             decimal suma = 0;
