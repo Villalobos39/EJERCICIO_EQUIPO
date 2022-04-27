@@ -36,7 +36,6 @@ namespace CUENTA_BANCARIA
             this.MontoInicial = new System.Windows.Forms.TextBox();
             this.InteresTxt = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.PeriodoBox = new System.Windows.Forms.ComboBox();
             this.label13 = new System.Windows.Forms.Label();
             this.ComposicionBox = new System.Windows.Forms.ComboBox();
             this.CuotaTxt = new System.Windows.Forms.TextBox();
@@ -55,25 +54,29 @@ namespace CUENTA_BANCARIA
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.dataGV = new System.Windows.Forms.DataGridView();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.MESES = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MONTO_ANTERIOR = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.INTERES = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TOTAL = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.PeriodoBox = new System.Windows.Forms.NumericUpDown();
+            this.AÑOS = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGV)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PeriodoBox)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.AÑOS);
+            this.groupBox1.Controls.Add(this.PeriodoBox);
             this.groupBox1.Controls.Add(this.NombreTxt);
             this.groupBox1.Controls.Add(this.label11);
             this.groupBox1.Controls.Add(this.label9);
             this.groupBox1.Controls.Add(this.MontoInicial);
             this.groupBox1.Controls.Add(this.InteresTxt);
             this.groupBox1.Controls.Add(this.label8);
-            this.groupBox1.Controls.Add(this.PeriodoBox);
             this.groupBox1.Controls.Add(this.label13);
             this.groupBox1.Controls.Add(this.ComposicionBox);
             this.groupBox1.Controls.Add(this.CuotaTxt);
@@ -134,20 +137,6 @@ namespace CUENTA_BANCARIA
             this.label8.Size = new System.Drawing.Size(15, 13);
             this.label8.TabIndex = 13;
             this.label8.Text = "%";
-            // 
-            // PeriodoBox
-            // 
-            this.PeriodoBox.FormattingEnabled = true;
-            this.PeriodoBox.Items.AddRange(new object[] {
-            "1 AÑO",
-            "2 AÑOS",
-            "3 AÑOS",
-            "4 AÑOS",
-            "5 AÑOS"});
-            this.PeriodoBox.Location = new System.Drawing.Point(176, 92);
-            this.PeriodoBox.Name = "PeriodoBox";
-            this.PeriodoBox.Size = new System.Drawing.Size(89, 21);
-            this.PeriodoBox.TabIndex = 10;
             // 
             // label13
             // 
@@ -326,13 +315,6 @@ namespace CUENTA_BANCARIA
             this.dataGV.Size = new System.Drawing.Size(436, 403);
             this.dataGV.TabIndex = 4;
             // 
-            // dateTimePicker1
-            // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(548, 12);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(200, 20);
-            this.dateTimePicker1.TabIndex = 5;
-            // 
             // MESES
             // 
             this.MESES.HeaderText = "MES";
@@ -356,6 +338,45 @@ namespace CUENTA_BANCARIA
             this.TOTAL.Name = "TOTAL";
             this.TOTAL.Width = 120;
             // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.Location = new System.Drawing.Point(548, 12);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(200, 20);
+            this.dateTimePicker1.TabIndex = 5;
+            // 
+            // PeriodoBox
+            // 
+            this.PeriodoBox.Location = new System.Drawing.Point(177, 91);
+            this.PeriodoBox.Maximum = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
+            this.PeriodoBox.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.PeriodoBox.Name = "PeriodoBox";
+            this.PeriodoBox.Size = new System.Drawing.Size(45, 20);
+            this.PeriodoBox.TabIndex = 6;
+            this.PeriodoBox.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.PeriodoBox.ValueChanged += new System.EventHandler(this.numericUpDown1_ValueChanged);
+            // 
+            // AÑOS
+            // 
+            this.AÑOS.AutoSize = true;
+            this.AÑOS.Location = new System.Drawing.Point(226, 94);
+            this.AÑOS.Name = "AÑOS";
+            this.AÑOS.Size = new System.Drawing.Size(37, 13);
+            this.AÑOS.TabIndex = 17;
+            this.AÑOS.Text = "AÑOS";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -374,6 +395,7 @@ namespace CUENTA_BANCARIA
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGV)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PeriodoBox)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -394,7 +416,6 @@ namespace CUENTA_BANCARIA
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label Interes_Label;
-        private System.Windows.Forms.ComboBox PeriodoBox;
         private System.Windows.Forms.DataGridView dataGV;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label9;
@@ -411,6 +432,8 @@ namespace CUENTA_BANCARIA
         private System.Windows.Forms.DataGridViewTextBoxColumn MONTO_ANTERIOR;
         private System.Windows.Forms.DataGridViewTextBoxColumn INTERES;
         private System.Windows.Forms.DataGridViewTextBoxColumn TOTAL;
+        private System.Windows.Forms.NumericUpDown PeriodoBox;
+        private System.Windows.Forms.Label AÑOS;
     }
 }
 

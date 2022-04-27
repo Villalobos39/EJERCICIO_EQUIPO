@@ -7,7 +7,7 @@ using System.Windows.Forms;
 
 namespace CUENTA_BANCARIA
 {
-    public class SaldoFinal 
+    class SaldoFinal
     {
         public List<Variables> ListCuenta { get; set; }
         public int NoRegistros { get; set; }

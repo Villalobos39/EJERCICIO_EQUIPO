@@ -21,18 +21,18 @@ namespace CUENTA_BANCARIA
         {
             try
             {
-                Cuenta_Bancaria cuenta_Bancaria = new Cuenta_Bancaria();
                 decimal DepositoInicial = Convert.ToDecimal(MontoInicial.Text);
                 decimal DepositoAhorro = Convert.ToDecimal(CuotaTxt.Text);
-                string Periodo = PeriodoBox.Text;
+                int Periodo =Convert.ToInt32(PeriodoBox.Value);
                 string Composicion = ComposicionBox.Text;
                 double PorcentajeIntere = Convert.ToDouble(InteresTxt.Text);
+                Cuenta_Bancaria cuenta_Bancaria = new Cuenta_Bancaria(PorcentajeIntere, Composicion, Periodo, DepositoInicial, DepositoAhorro);
 
                 // CALCULAR INGRESOS ES EL SALDO TOTAL DE SU CUENTA DE AHORRO 
                 // ENVIAMOS LOS PARAMENTROS DE PORCENTANJE , LA COMPOSICION , EL PERIDO Y LOS DEPOSISTOS 
-                cuenta_Bancaria.CalcularIngresos(PorcentajeIntere, Composicion, Periodo, DepositoInicial, DepositoAhorro);
-                MostrarLista(cuenta_Bancaria.ListCuenta);
+                cuenta_Bancaria.CalcularIngresos();
                 //Metodo();
+                MostrarLista(cuenta_Bancaria.ListCuenta);
                 SaldoFinal_Label.Text = Math.Round(cuenta_Bancaria.Resultado,2).ToString();
                 Incial_Label.Text = DepositoInicial.ToString();
                 Interes_Label.Text =PorcentajeIntere.ToString();
@@ -47,21 +47,20 @@ namespace CUENTA_BANCARIA
 
         }
 
-        private void MostrarLista (List<Variables> lista)
+        private void MostrarLista(List<Variables> lista)
         {
+            int cont = 1;
             foreach (var item in lista)
             {
 
                 int n = dataGV.Rows.Add(lista.Count);
-               // valor += DepositoInicial + DepositoAhorro + TasaInt;
-               // TasaInt = valor * Convert.ToDecimal(Interes);
-               // suma = valor + TasaInt;
-                dataGV.Rows[n].Cells[0].Value = item.Saldo;
-                dataGV.Rows[n].Cells[1].Value = item.SaldoInteres;  // Math.Round(valor, 4).ToString();
-                //dataGV.Rows[n].Cells[2].Value = item. Math.Round(TasaInt, 4).ToString();
-                //dataGV.Rows[n].Cells[3].Value = Math.Round(suma, 4).ToString();
+                dataGV.Rows[n].Cells[0].Value = cont++.ToString();
+                dataGV.Rows[n].Cells[1].Value = item.Saldo.ToString();
+                dataGV.Rows[n].Cells[2].Value = item.SaldoInteres.ToString();  // Math.Round(valor, 4).ToString();
+                dataGV.Rows[n].Cells[3].Value = item.TasaInteres.ToString();
             }
         }
+
         public decimal SaldoTotalPrueba(decimal DepositoInicial, decimal DepositoAhorro, int Mensualidades, double Interes)
         {
             decimal TasaInt = 0;
@@ -91,7 +90,10 @@ namespace CUENTA_BANCARIA
             Application.Restart();
         }
 
-       
+        private void numericUpDown1_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
 
