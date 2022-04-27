@@ -9,6 +9,7 @@ namespace CUENTA_BANCARIA
     class CalcularCuenta
     {
         SaldoFinal SaldoFinal = new SaldoFinal();
+        public List<Variables> ListCuenta { get; set; }
         // UNA VEZ QUE RECIVIMOS LA COMPOSISCION EN LA QUE SE REALIZARA
         // SE APLICARA LA TASA DE INTERES A LO QUE LE CORRESPONDE 
         public decimal CuentaAhorroMensual(double Interes, string Periodo, decimal DepositoInicial, decimal DepositoAhorro)
@@ -82,22 +83,27 @@ namespace CUENTA_BANCARIA
                 case "1 AÑO":
                     Anual = 1;
                     Total = SaldoFinal.SaldoTotal(DepositoInicial, DepositoAhorro, Anual, Interes);
+                    this.ListCuenta = SaldoFinal.ListCuenta;
                     break;
                 case "2 AÑOS":
                     Anual = 2;
                     Total = SaldoFinal.SaldoTotal(DepositoInicial, DepositoAhorro, Anual, Interes);
+                    this.ListCuenta = SaldoFinal.ListCuenta;
                     break;
                 case "3 AÑOS":
                     Anual = 3;
                     Total = SaldoFinal.SaldoTotal(DepositoInicial, DepositoAhorro, Anual, Interes);
+                    this.ListCuenta = SaldoFinal.ListCuenta;
                     break;
                 case "4 AÑOS":
                     Anual = 4;
                     Total = SaldoFinal.SaldoTotal(DepositoInicial, DepositoAhorro, Anual, Interes);
+                    this.ListCuenta = SaldoFinal.ListCuenta;
                     break;
                 case "5 AÑOS":
                     Anual = 5;
                     Total = SaldoFinal.SaldoTotal(DepositoInicial, DepositoAhorro, Anual, Interes);
+                    this.ListCuenta = SaldoFinal.ListCuenta;
                     break;
             }
             return Total;

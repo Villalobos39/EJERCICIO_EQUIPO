@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace CUENTA_BANCARIA
 {
-    class IVariables
+    public class Variables
     {
-        public List<IVariables> ListCuenta { get; set; }
+       
         public int NoRegistros { get; set; }
         public decimal Saldo { get; set; }
         public decimal TasaInteres { get; set; }

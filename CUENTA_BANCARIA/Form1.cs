@@ -31,6 +31,7 @@ namespace CUENTA_BANCARIA
                 // CALCULAR INGRESOS ES EL SALDO TOTAL DE SU CUENTA DE AHORRO 
                 // ENVIAMOS LOS PARAMENTROS DE PORCENTANJE , LA COMPOSICION , EL PERIDO Y LOS DEPOSISTOS 
                 cuenta_Bancaria.CalcularIngresos(PorcentajeIntere, Composicion, Periodo, DepositoInicial, DepositoAhorro);
+                MostrarLista(cuenta_Bancaria.ListCuenta);
                 //Metodo();
                 SaldoFinal_Label.Text = Math.Round(cuenta_Bancaria.Resultado,2).ToString();
                 Incial_Label.Text = DepositoInicial.ToString();
@@ -46,6 +47,21 @@ namespace CUENTA_BANCARIA
 
         }
 
+        private void MostrarLista (List<Variables> lista)
+        {
+            foreach (var item in lista)
+            {
+
+                int n = dataGV.Rows.Add(lista.Count);
+               // valor += DepositoInicial + DepositoAhorro + TasaInt;
+               // TasaInt = valor * Convert.ToDecimal(Interes);
+               // suma = valor + TasaInt;
+                dataGV.Rows[n].Cells[0].Value = item.Saldo;
+                dataGV.Rows[n].Cells[1].Value = item.SaldoInteres;  // Math.Round(valor, 4).ToString();
+                //dataGV.Rows[n].Cells[2].Value = item. Math.Round(TasaInt, 4).ToString();
+                //dataGV.Rows[n].Cells[3].Value = Math.Round(suma, 4).ToString();
+            }
+        }
         public decimal SaldoTotalPrueba(decimal DepositoInicial, decimal DepositoAhorro, int Mensualidades, double Interes)
         {
             decimal TasaInt = 0;

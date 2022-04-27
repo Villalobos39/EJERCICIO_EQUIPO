@@ -9,6 +9,7 @@ namespace CUENTA_BANCARIA
     class Cuenta_Bancaria
     {
         public decimal Resultado = 0;
+        public List<Variables> ListCuenta { get; set; }
 
         // EL METODO MANDA A LLAMAR A LA CLASE CALCULAR CUENTA DONDE SE REALIZA LA OPERACION DESIGNADA 
         public void CalcularIngresos(double Interes, string Composicion, string Periodo, decimal DepositoInicial, decimal DepositoAhorro)
@@ -22,14 +23,17 @@ namespace CUENTA_BANCARIA
                 case "MENSUAL":
                     TasaIntere = Math.Round((Interes/100) / 12,5);
                     Resultado = calcularcuenta.CuentaAhorroMensual(TasaIntere, Periodo,DepositoInicial,DepositoAhorro);
+                    this.ListCuenta= calcularcuenta.ListCuenta;
                     break;
                 case "SEMESTRAL":
                     TasaIntere = Math.Round((Interes / 100) / 2, 5);
                     Resultado = calcularcuenta.CuentaAhorroSemestral(TasaIntere, Periodo, DepositoInicial, DepositoAhorro);
+                    this.ListCuenta= calcularcuenta.ListCuenta;
                     break;
                 case "ANUAL":
                     TasaIntere = Math.Round((Interes / 100), 5);
                     Resultado = calcularcuenta.CuentaAhorroAnual(TasaIntere, Periodo, DepositoInicial, DepositoAhorro);
+                    this.ListCuenta= calcularcuenta.ListCuenta;
                     break;
             }
         }
