@@ -15,7 +15,7 @@ namespace CUENTA_BANCARIA
         // RECIBE ÑAS MENSUALIDADES DE DEPOSITOS QUE HARA Y SE CALCULA EL VALOR DEPENDIENDO DE SU INTERES
         public decimal SaldoTotal(decimal DepositoInicial, decimal DepositoAhorro, int Mensualidades, double Interes)
         {
-            ListCuenta = new List<Variables>();
+            //ListCuenta = new List<Variables>();
             decimal TasaInt = 0;
             decimal suma = 0;
             decimal valor = 0;
@@ -31,13 +31,14 @@ namespace CUENTA_BANCARIA
             return Math.Round(suma, 4);
         }
 
-        public List<Variables> Parametros(List<Variables> ListaItem) 
-        {
-           return ListaItem;
-        }
-        public int ItemMensl(int Item)
-        {
-            return Item;
-        }
+        //public List<Variables> Parametros() 
+        //{
+        //   return ListCuenta;
+        //}
+        //public int ItemMensl()
+        //{
+        //    return NoRegistros;
+        //}
+
     }
 }

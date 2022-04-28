@@ -10,7 +10,8 @@ namespace CUENTA_BANCARIA
     {
         SaldoFinal SaldoFinal = new SaldoFinal();
         public decimal Resultado = 0;
-        public List<Variables> ListCuenta { get; set; }
+        public int NoRegistros { get; set; }
+        public List<Variables> ListCuenta { get; set; } 
         double Interes { get; set; }
         string Composicion { get; set; }
         int Periodo { get; set; }
@@ -57,23 +58,23 @@ namespace CUENTA_BANCARIA
             {
                 case 1:
                     Mensualidades = Meses;
-                    Total = SaldoFinal.SaldoTotal(DepositoInicial, DepositoAhorro, Mensualidades, TasaIntere);
+                    Total = SaldoTotal(DepositoInicial, DepositoAhorro, Mensualidades, TasaIntere);
                     break;
                 case 2:
                     Mensualidades = Meses * 2;
-                    Total = SaldoFinal.SaldoTotal(DepositoInicial, DepositoAhorro, Mensualidades, TasaIntere);
+                    Total = SaldoTotal(DepositoInicial, DepositoAhorro, Mensualidades, TasaIntere);
                     break;
                 case 3:
                     Mensualidades = Meses * 3;
-                    Total = SaldoFinal.SaldoTotal(DepositoInicial, DepositoAhorro, Mensualidades, TasaIntere);
+                    Total = SaldoTotal(DepositoInicial, DepositoAhorro, Mensualidades, TasaIntere);
                     break;
                 case 4:
                     Mensualidades = Meses * 4;
-                    Total = SaldoFinal.SaldoTotal(DepositoInicial, DepositoAhorro, Mensualidades, TasaIntere);
+                    Total = SaldoTotal(DepositoInicial, DepositoAhorro, Mensualidades, TasaIntere);
                     break;
                 case 5:
                     Mensualidades = Meses * 5;
-                    Total = SaldoFinal.SaldoTotal(DepositoInicial, DepositoAhorro, Mensualidades, TasaIntere);
+                    Total = SaldoTotal(DepositoInicial, DepositoAhorro, Mensualidades, TasaIntere);
                     break;
             }
             return Total;
@@ -87,23 +88,23 @@ namespace CUENTA_BANCARIA
             {
                 case 1:
                     Semestres = 2;
-                    Total = SaldoFinal.SaldoTotal(DepositoInicial, DepositoAhorro, Semestres, TasaIntere);
+                    Total = SaldoTotal(DepositoInicial, DepositoAhorro, Semestres, TasaIntere);
                     break;
                 case 2:
                     Semestres = 4;
-                    Total = SaldoFinal.SaldoTotal(DepositoInicial, DepositoAhorro, Semestres, TasaIntere);
+                    Total =SaldoTotal(DepositoInicial, DepositoAhorro, Semestres, TasaIntere);
                     break;
                 case 3:
                     Semestres = 6;
-                    Total = SaldoFinal.SaldoTotal(DepositoInicial, DepositoAhorro, Semestres, TasaIntere);
+                    Total = SaldoTotal(DepositoInicial, DepositoAhorro, Semestres, TasaIntere);
                     break;
                 case 4:
                     Semestres = 8;
-                    Total = SaldoFinal.SaldoTotal(DepositoInicial, DepositoAhorro, Semestres, TasaIntere);
+                    Total = SaldoTotal(DepositoInicial, DepositoAhorro, Semestres, TasaIntere);
                     break;
                 case 5:
                     Semestres = 10;
-                    Total = SaldoFinal.SaldoTotal(DepositoInicial, DepositoAhorro, Semestres, TasaIntere);
+                    Total = SaldoTotal(DepositoInicial, DepositoAhorro, Semestres, TasaIntere);
                     break;
             }
             return Total;
@@ -115,23 +116,40 @@ namespace CUENTA_BANCARIA
             switch (Periodo)
             {
                 case 1:
-                    Total = SaldoFinal.SaldoTotal(DepositoInicial, DepositoAhorro, Periodo, TasaIntere);
+                    Total = SaldoTotal(DepositoInicial, DepositoAhorro, Periodo, TasaIntere);
                     break;
                 case 2:
-                    Total = SaldoFinal.SaldoTotal(DepositoInicial, DepositoAhorro, Periodo, TasaIntere);
+                    Total = SaldoTotal(DepositoInicial, DepositoAhorro, Periodo, TasaIntere);
                     break;
                 case 3:
-                    Total = SaldoFinal.SaldoTotal(DepositoInicial, DepositoAhorro, Periodo, TasaIntere);
+                    Total = SaldoTotal(DepositoInicial, DepositoAhorro, Periodo, TasaIntere);
                     break;
                 case 4:
-                    Total = SaldoFinal.SaldoTotal(DepositoInicial, DepositoAhorro, Periodo, TasaIntere);
+                    Total = SaldoTotal(DepositoInicial, DepositoAhorro, Periodo, TasaIntere);
                     break;
                 case 5:
-                    Total = SaldoFinal.SaldoTotal(DepositoInicial, DepositoAhorro, Periodo, TasaIntere);
+                    Total = SaldoTotal(DepositoInicial, DepositoAhorro, Periodo, TasaIntere);
                     break;
             }
             return Total;
         }
 
+        public decimal SaldoTotal(decimal DepositoInicial, decimal DepositoAhorro, int Mensualidades, double Interes)
+        {
+            ListCuenta = new List<Variables>();
+            decimal TasaInt = 0;
+            decimal suma = 0;
+            decimal valor = 0;
+            NoRegistros = Mensualidades;
+            for (int i = 1; i <= Mensualidades; i++)
+            {
+                valor += DepositoInicial + DepositoAhorro + TasaInt;
+                TasaInt = valor * Convert.ToDecimal(Interes);
+                suma = valor + TasaInt;
+                ListCuenta.Add(new Variables() { Saldo = valor, TasaInteres = TasaInt, SaldoInteres = suma });
+                DepositoInicial = 0;
+            }
+            return Math.Round(suma, 4);
+        }
     }
 }
