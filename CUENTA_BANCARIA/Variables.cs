@@ -8,8 +8,9 @@ namespace CUENTA_BANCARIA
 {
     class Variables
     {
-        public decimal Saldo { get; set; }
-        public decimal TasaInteres { get; set; }
-        public decimal SaldoInteres { get; set; }
+        public String MES { get; set; }
+        public String SALDO_DEPOSISTO { get; set; }
+        public String TASA_INTERES { get; set; }
+        public String SALDO_MAS_INTERES { get; set; }
     }
 }

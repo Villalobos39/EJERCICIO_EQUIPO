@@ -25,7 +25,7 @@ namespace CUENTA_BANCARIA
                 valor += DepositoInicial + DepositoAhorro + TasaInt;
                 TasaInt = valor * Convert.ToDecimal(Interes);
                 suma = valor + TasaInt;
-                ListCuenta.Add(new Variables() { Saldo = valor, TasaInteres = TasaInt, SaldoInteres = suma });
+                //ListCuenta.Add(new Variables() { Saldo = valor, TasaInteres = TasaInt, SaldoInteres = suma });
                 DepositoInicial = 0;
             }
             return Math.Round(suma, 4);
